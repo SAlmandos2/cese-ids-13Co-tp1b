@@ -37,11 +37,16 @@ static const struct alumno_s SANTIAGO_ALMANDOS = {
     .documento = "93.748.537",
 };
 
+/** Array contenedor de todos los alumnos definidos anteriormente */
 const alumno_t ALUMNOS[] = {
     &ESTEBAN_VOLENTINI,
     &SANTIAGO_ALMANDOS,
 };
 
+/** 
+ * @brief Tamaño del array ALUMNOS.
+ * Contiene la cantidad de alumnos que hay registrados.
+ */
 const int CANTIDAD_ALUMNOS = (sizeof(ALUMNOS) / sizeof(alumno_t));
 
 /*=====[Definitions of private global variables]=============================*/
@@ -65,6 +70,7 @@ bool SerializarAlumno(char * cadena, size_t espacio, const alumno_t alumno) {
 
     return (resultado >= 0);
 }
+/*-----------------------------------------------*/
 
 bool SerializarAlumnos(char * cadena, size_t espacio) {
     static const int  cantidad = sizeof(ALUMNOS) / sizeof(alumno_t);
@@ -86,5 +92,5 @@ bool SerializarAlumnos(char * cadena, size_t espacio) {
     snprintf(&cadena[posicion] - 5, espacio - posicion + 5, "\r\n]");
     return resultado;
 }
-
+/*-----------------------------------------------*/
 /*=====[Implementations of private functions]================================*/

@@ -29,18 +29,36 @@ extern "C" {
 
 /*=====[Definitions of public data types]====================================*/
 
+/**
+ * @brief Estructura contenedora de los datos de un alumno.
+ * Los datos almacenados son: nombre, apellido y documento.
+ */
 typedef struct alumno_s {
-    char apellidos[30];
-    char nombres[30];
-    char documento[11];
-} const * alumno_t;
+    char apellidos[30];         /**< Array de caracteres donde se almacenará el apellido */
+    char nombres[30];           /**< Array de caracteres donde se almacenará el nombre */
+    char documento[11];         /**< Array de caracteres donde se almacenará el documento */
+} const * alumno_t;             
 
 /*=====[Definitions of public global variables]==============================*/
 
 /*=====[Prototypes (declarations) of public functions]=======================*/
 
+/**
+ * @brief Se encarga de formatear los datos de *alumno* en JSON, y colocarlos en una *cadena* de caracteres.
+ * Toma los datos de *alumno*, los formatea y los coloca en el array apuntado por *cadena*
+ * @param cadena    puntero al array de caracteres donde se almacenará el texto formateado.
+ * @param espacio   tamaño del array apuntado por *cadena*
+ * @param alumno    estructura contenedora de los datos del alumno.
+ * @return  Verdadero si copió datos en cadena con el formato deseado.
+ */
 bool SerializarAlumno(char * cadena, size_t espacio, const alumno_t alumno);
 
+/**
+ * @brief Coloca los datos de todos los alumnos en una cadena de caracteres con un formato JSON.
+ * @param cadena    Puntero al array de caracteres donde se almacenara los datos formateados.
+ * @param espacio   Tamaño del buffer apuntado por *cadena*.
+ * @return Verdadero si se encuentran todos los alumnos en la cadena de caracteres, falso si hubo un error.
+ */
 bool SerializarAlumnos(char * cadena, size_t espacio);
 
 /*=====[Prototypes (declarations) of public interrupt functions]=============*/

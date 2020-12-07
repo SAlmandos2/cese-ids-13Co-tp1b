@@ -14,6 +14,15 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@echo Compiling source file $(notdir $(basename $<))
 	@gcc -c $< -I$(INC_DIR) -o $@
 
+doc:
+	@echo Creating document file.
+ifeq (,$(wildcard ./Doxyfile))
+	@doxygen -g
+	@echo Please edit Doxygen config file
+else
+	@doxygen Doxyfile
+endif
+
 ###############################################################################
 # Creation of output folders
 build_folders: $(BIN_DIR) $(LIB_DIR) $(OBJ_DIR) $(DOC_DIR) $(DPN_DIR) $(RST_DIR)
